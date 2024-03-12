@@ -7,14 +7,15 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { extendTheme } from '@chakra-ui/react'
 import { mode } from '@chakra-ui/theme-tools'
 import type { GlobalStyleProps } from '@chakra-ui/theme-tools';
+import { BrowserRouter } from 'react-router-dom'
 
 const styles = {
-	global: (props: GlobalStyleProps) => ({
-		body: {
-			bg: mode("gray.100", "black")(props),
-			color: mode("gray.800", "whiteAlpha.900")(props),
-		},
-	}),
+  global: (props: GlobalStyleProps) => ({
+    body: {
+      bg: mode("gray.100", "black")(props),
+      color: mode("gray.800", "whiteAlpha.900")(props),
+    },
+  }),
 };
 
 const config = {
@@ -28,8 +29,10 @@ export default theme
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ChakraProvider theme={theme}>
-      <App />
-    </ChakraProvider>
+    <BrowserRouter>
+      <ChakraProvider theme={theme}>
+        <App />
+      </ChakraProvider>
+    </BrowserRouter>
   </React.StrictMode>,
 )
