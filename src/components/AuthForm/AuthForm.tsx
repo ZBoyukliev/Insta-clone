@@ -21,11 +21,21 @@ const AuthForm = () => {
                         <Text mx={2} color={"white"}>OR</Text>
                         <Box flex={2} h={"1px"} bg={"gray.400"} />
                     </Flex>
-                    <Flex>
-                        <Image src="/google.png" h={5} alt="Google logo" cursor={"pointer"} />
-                        <Text mx={2}>Login with Google</Text>
+                    <Flex alignItems={"center"} justifyContent={"center"} cursor={"pointer"}>
+                        <Image src="/google.png" h={5} alt="Google logo" />
+                        <Text mx={2} color={"blue.400"}>Login with Google</Text>
                     </Flex>
                 </VStack>
+            </Box>
+            <Box border={"1px solid gray"} borderRadius={4} padding={5}>
+                <Flex alignItems={"center"} justifyContent={"center"}>
+                    <Box mx={2} fontSize={14}>
+                        {isLogin ? "Don't have an account?" : "Already have an account?"}
+                    </Box>
+                    <Box onClick={() => setIsLogin(!isLogin)} color={"blue.500"} cursor={"pointer"}>
+                        {isLogin ? "Sign up" : "Log in"}
+                    </Box>
+                </Flex>
             </Box>
         </>
     )
