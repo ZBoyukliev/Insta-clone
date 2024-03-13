@@ -1,19 +1,33 @@
 import { Box, Button, Flex, Image, Input, Text, VStack } from "@chakra-ui/react"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom";
 
 const AuthForm = () => {
 
     const [isLogin, setIsLogin] = useState(true);
+    const [inputs, setInputs] = useState({
+        email: "",
+        password: "",
+        confirmPassword: ""
+    });
+    const navigate = useNavigate()
+
+    const handleAuth = () => {
+        if(!inputs.email || !inputs.password) {
+            return
+        }
+        navigate('/')
+    }
 
     return (
         <>
             <Box border={"1px solid gray"} borderRadius={4} padding={5}>
                 <VStack>
-                    <Image src="/logo.png" h={24} cursor={"pointer"} alt="Instagram logo" />
-                    <Input placeholder='Email' fontSize={14} type="email" />
-                    <Input placeholder='Password' fontSize={14} type="password" />
-                    {!isLogin && <Input placeholder='Confirm password' fontSize={14} type="password" />}
-                    <Button w={"full"} colorScheme="blue" size={"sm"} fontSize={16}>
+                    <Image src="/logo.png" h={24} cursor={"pointer"} alt="Instagram logo"/>
+                    <Input placeholder='Email' fontSize={14} type="email" value={inputs.email} onChange={(e) => setInputs({ ...inputs, email: e.target.value })} />
+                    <Input placeholder='Password' fontSize={14} type="password" value={inputs.password} onChange={(e) => setInputs({ ...inputs, password: e.target.value })}/>
+                    {!isLogin && <Input placeholder='Confirm password' fontSize={14} type="password" value={inputs.confirmPassword} onChange={(e) => setInputs({ ...inputs, confirmPassword: e.target.value })}/>}
+                    <Button w={"full"} colorScheme="blue" size={"sm"} fontSize={16} onClick={handleAuth}>
                         {isLogin ? "Login" : "Sign up"}
                     </Button>
                     <Flex alignItems={"center"} justifyContent={"center"} my={4} w={"full"}>
@@ -32,7 +46,7 @@ const AuthForm = () => {
                     <Box mx={2} fontSize={14}>
                         {isLogin ? "Don't have an account?" : "Already have an account?"}
                     </Box>
-                    <Box onClick={() => setIsLogin(!isLogin)} color={"blue.500"} cursor={"pointer"}>
+                    <Box onClick={() => setIsLogin(!isLogin)} color={"blue.400"} cursor={"pointer"}>
                         {isLogin ? "Sign up" : "Log in"}
                     </Box>
                 </Flex>
