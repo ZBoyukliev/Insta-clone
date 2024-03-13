@@ -14,7 +14,7 @@ const AuthForm = () => {
 
     const handleAuth = () => {
         if(!inputs.email || !inputs.password) {
-            return
+            return alert('fields')
         }
         navigate('/')
     }
