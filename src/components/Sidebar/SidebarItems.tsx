@@ -1,9 +1,11 @@
-
+import Home from "./items/Home";
 
 const SidebarItems = () => {
-  return (
-    <div>SidebarItems</div>
-  )
-}
+	return (
+		<>
+			<Home />
+		</>
+	);
+};
 
-export default SidebarItems
+export default SidebarItems;
