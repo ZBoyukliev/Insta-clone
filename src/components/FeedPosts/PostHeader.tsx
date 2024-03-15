@@ -9,7 +9,7 @@ const PostHeader = () => {
       my={2}
     >
       <Flex alignItems={"center"} gap={2}>
-        <Avatar src="/img1.png" size={"sm"} />
+        <Avatar src="/img2.png" size={"sm"} />
         <Flex fontSize={12} fontWeight={"bold"} gap="2">
           asprogramer
           <Box color={"gray.500"}>• 1w</Box>
@@ -20,7 +20,7 @@ const PostHeader = () => {
           size={"xs"}
           bg={"transparent"}
           fontSize={12}
-          color={"blue.500"}
+          color={"blue.400"}
           fontWeight={"bold"}
           _hover={{
             color: "white",

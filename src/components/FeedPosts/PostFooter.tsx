@@ -48,7 +48,7 @@ const PostFooter = () => {
 						<InputRightElement>
 							<Button
 								fontSize={14}
-								color={"blue.500"}
+								color={"blue.400"}
 								fontWeight={600}
 								cursor={"pointer"}
 								_hover={{ color: "white" }}
