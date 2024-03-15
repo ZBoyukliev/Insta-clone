@@ -1,4 +1,4 @@
-import { Box, Flex,Text } from "@chakra-ui/react";
+import { Box, Button, Flex,Input,InputGroup,InputRightElement,Text } from "@chakra-ui/react";
 import { CommentLogo, NotificationsLogo } from "../../assets/constants";
 
 
@@ -27,18 +27,38 @@ const PostFooter = () => {
 
 				<>
 					<Text fontSize='sm' fontWeight={700}>
-						creator profile username
+						poster{" "}
 						<Text as='span' fontWeight={400}>
-							post.caption
+							feeling amazing
 						</Text>
 					</Text>
 						<Text fontSize='sm' color={"gray"} cursor={"pointer"} >
-							View all  comments
+							View all 56 comments
 						</Text>
 					{/* COMMENTS MODAL ONLY IN THE HOME PAGE */}
 					
 				</>
-
+        <Flex alignItems={"center"} gap={2} justifyContent={"space-between"} w={"full"}>
+					<InputGroup>
+						<Input
+							variant={"flushed"}
+							placeholder={"Add a comment..."}
+							fontSize={14}
+						/>
+						<InputRightElement>
+							<Button
+								fontSize={14}
+								color={"blue.500"}
+								fontWeight={600}
+								cursor={"pointer"}
+								_hover={{ color: "white" }}
+								bg={"transparent"}
+							>
+								Post
+							</Button>
+						</InputRightElement>
+					</InputGroup>
+				</Flex>
 		</Box>
 	);
 };
