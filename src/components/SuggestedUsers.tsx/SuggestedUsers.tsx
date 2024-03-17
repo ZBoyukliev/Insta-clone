@@ -1,7 +1,11 @@
+import { VStack } from "@chakra-ui/react"
 
 const SuggestedUsers = () => {
   return (
-    <div>SuggestedUsers</div>
+	<VStack py={8} px={6} gap={4}>
+        
+    </VStack>
+    
   )
 }
 
