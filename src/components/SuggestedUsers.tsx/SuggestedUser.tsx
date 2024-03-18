@@ -10,7 +10,10 @@ type SuggestedUserProps = {
 const SuggestedUser = ({ followers, name, avatar }: SuggestedUserProps) => {
   const [isFollowing, setIsFollowing] = useState(false);
 
-  
+  const handleFollowing = () => {
+    setIsFollowing(!isFollowing)
+  }
+
   return (
     <Flex alignItems={"center"} justifyContent={"space-between"} w={"full"}>
       <Flex>
@@ -24,7 +27,14 @@ const SuggestedUser = ({ followers, name, avatar }: SuggestedUserProps) => {
           </Box>
         </VStack>
       </Flex>
-      <Button>
+      <Button onClick={handleFollowing} fontSize={13}
+					bg={"transparent"}
+					p={0}
+					h={"max-content"}
+					fontWeight={"medium"}
+					color={"blue.400"}
+					cursor={"pointer"}
+					_hover={{ color: "white" }}>
         {isFollowing ? "Unfollow" : "Follow"}
       </Button>
     </Flex>
