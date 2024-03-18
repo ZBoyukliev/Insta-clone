@@ -8,7 +8,9 @@ type SuggestedUserProps = {
 };
 
 const SuggestedUser = ({ followers, name, avatar }: SuggestedUserProps) => {
-  const [isFollowing, setIsFollowing] = useState(false)
+  const [isFollowing, setIsFollowing] = useState(false);
+
+  
   return (
     <Flex alignItems={"center"} justifyContent={"space-between"} w={"full"}>
       <Flex>
