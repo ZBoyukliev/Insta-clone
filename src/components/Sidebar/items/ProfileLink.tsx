@@ -13,8 +13,9 @@ const ProfileLink = () => {
 			display={{ base: "block", md: "none" }}
 		>
 			<Link
-				display={"flex"}
 				as={RouterLink}
+				to={"/asprogramer"}
+				display={"flex"}
 				alignItems={"center"}
 				gap={4}
 				_hover={{ bg: "whiteAlpha.400" }}
