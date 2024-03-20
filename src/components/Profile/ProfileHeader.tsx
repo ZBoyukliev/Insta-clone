@@ -62,9 +62,12 @@ const ProfileHeader = () => {
         </Flex>
         <Flex alignItems={"center"} gap={4}>
 					<Text fontSize={"sm"} fontWeight={"bold"}>
-						
+						As programer
 					</Text>
 				</Flex>
+        <Text fontSize={"sm"}>
+						Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+					</Text>
       </VStack>
     </Flex>
   )
