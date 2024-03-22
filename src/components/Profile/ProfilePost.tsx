@@ -1,4 +1,4 @@
-import { Avatar, Box, Flex, GridItem, Image, Modal, ModalBody, ModalCloseButton, ModalContent, ModalOverlay, Text, useDisclosure } from "@chakra-ui/react";
+import { Avatar, Box, Divider, Flex, GridItem, Image, Modal, ModalBody, ModalCloseButton, ModalContent, ModalOverlay, Text, useDisclosure } from "@chakra-ui/react";
 import { AiFillHeart } from "react-icons/ai";
 import { FaComment } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
@@ -81,22 +81,21 @@ const ProfilePost = ({ img }: ProfilePostProps) => {
 							<Flex flex={1} flexDir={"column"} px={10} display={{ base: "none", md: "flex" }}>
 								<Flex alignItems={"center"} justifyContent={"space-between"}>
 									<Flex alignItems={"center"} gap={4}>
-										<Avatar src={img} size={"sm"} name='As a Programmer' />
+										<Avatar src={"profilepic.png"} size={"sm"} name='As a Programmer' />
 										<Text fontWeight={"bold"} fontSize={12}>
 											username
 										</Text>
 									</Flex>
-
+									<Box
+										bg={"transparent"}
+										_hover={{ bg: "whiteAlpha.300", color: "red.600" }}
+										borderRadius={4}
+										p={1}
+									>
+										<MdDelete size={20} cursor='pointer' />
+									</Box>
 								</Flex>
-
-								<Box
-									bg={"transparent"}
-									_hover={{ bg: "whiteAlpha.300", color: "red.600" }}
-									borderRadius={4}
-									p={1}
-								>
-									<MdDelete size={20} cursor='pointer' />
-								</Box>
+								<Divider my={4} bg={"gray.500"} />
 							</Flex>
 						</Flex>
 					</ModalBody>
