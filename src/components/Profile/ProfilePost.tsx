@@ -1,18 +1,19 @@
-import { Avatar, Flex, GridItem, Image, Modal, ModalBody, ModalCloseButton, ModalContent, ModalOverlay, Text, useDisclosure } from "@chakra-ui/react";
+import { Avatar, Box, Flex, GridItem, Image, Modal, ModalBody, ModalCloseButton, ModalContent, ModalOverlay, Text, useDisclosure } from "@chakra-ui/react";
 import { AiFillHeart } from "react-icons/ai";
 import { FaComment } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
 
 interface ProfilePostProps {
-  img: string;
+	img: string;
 };
 
-const ProfilePost = ({img}: ProfilePostProps) => {
+const ProfilePost = ({ img }: ProfilePostProps) => {
 
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
-  return (
-	<>
-    <GridItem
+	return (
+		<>
+			<GridItem
 				cursor={"pointer"}
 				borderRadius={4}
 				overflow={"hidden"}
@@ -88,13 +89,21 @@ const ProfilePost = ({img}: ProfilePostProps) => {
 
 								</Flex>
 
+								<Box
+									bg={"transparent"}
+									_hover={{ bg: "whiteAlpha.300", color: "red.600" }}
+									borderRadius={4}
+									p={1}
+								>
+									<MdDelete size={20} cursor='pointer' />
+								</Box>
 							</Flex>
 						</Flex>
 					</ModalBody>
 				</ModalContent>
 			</Modal>
-			</>
-  )
+		</>
+	)
 }
 
 export default ProfilePost
