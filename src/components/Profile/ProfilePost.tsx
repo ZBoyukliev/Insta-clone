@@ -1,4 +1,4 @@
-import { Avatar, Box, Divider, Flex, GridItem, Image, Modal, ModalBody, ModalCloseButton, ModalContent, ModalOverlay, Text, useDisclosure } from "@chakra-ui/react";
+import { Avatar, Box, Divider, Flex, GridItem, Image, Modal, ModalBody, ModalCloseButton, ModalContent, ModalOverlay, Text, useColorMode, useDisclosure } from "@chakra-ui/react";
 import { AiFillHeart } from "react-icons/ai";
 import { FaComment } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
@@ -10,6 +10,7 @@ interface ProfilePostProps {
 const ProfilePost = ({ img }: ProfilePostProps) => {
 
 	const { isOpen, onOpen, onClose } = useDisclosure();
+	const { colorMode } = useColorMode()
 
 	return (
 		<>
@@ -59,7 +60,7 @@ const ProfilePost = ({ img }: ProfilePostProps) => {
 				<ModalOverlay />
 				<ModalContent>
 					<ModalCloseButton />
-					<ModalBody bg={"black"} pb={5}>
+					<ModalBody bg={colorMode === "light" ? "white" : "black"} pb={5}>
 						<Flex
 							gap='4'
 							w={{ base: "90%", sm: "70%", md: "full" }}

@@ -24,7 +24,6 @@ const ColorModeButton = () => {
                 p={2}
                 w={{ base: 10, md: "full" }}
                 justifyContent={{ base: "center", md: "flex-start" }}
-                // variant={"ghost"}
             >
                 {colorMode === "light" ? <BiMoon size={25} /> : <BiSun size={25} />}
                 <Box display={{ base: "none", md: "block" }}>Color mode</Box>
