@@ -1,3 +1,4 @@
+import ColorModeButton from "./items/ColorModeButton";
 import CreatePost from "./items/CreatePost";
 import Home from "./items/Home";
 import Notifications from "./items/Notifications";
@@ -12,6 +13,7 @@ const SidebarItems = () => {
             <Notifications />
             <CreatePost />
             <ProfileLink />
+			<ColorModeButton />
 		</>
 	);
 };
