@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
-import { ChakraProvider } from '@chakra-ui/react'
+import { ChakraProvider, ColorModeScript } from '@chakra-ui/react'
 
 import { extendTheme } from '@chakra-ui/react'
 import { mode } from '@chakra-ui/theme-tools'
@@ -20,15 +20,14 @@ const styles = {
 
 const config = {
   initialColorMode: 'dark',
-  useSystemColorMode: false,
+  useSystemColorMode: true,
 }
 
 const theme = extendTheme({ config, styles })
 
-export default theme
-
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
+    <ColorModeScript initialColorMode={theme.config.initialColorMode} />
     <BrowserRouter>
       <ChakraProvider theme={theme}>
         <App />

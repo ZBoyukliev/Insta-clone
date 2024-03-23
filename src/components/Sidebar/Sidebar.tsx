@@ -1,11 +1,12 @@
-import { Box, Button, Flex, Link, Tooltip } from "@chakra-ui/react"
+import { Box, Button, Flex, Link, Tooltip, useColorMode } from "@chakra-ui/react"
 import { Link as RouterLink } from "react-router-dom";
 import { InstagramLogo, InstagramMobileLogo } from "../../assets/constants";
 import SidebarItems from "./SidebarItems";
-import { BiLogOut } from "react-icons/bi";
+import { BiLogOut, BiMoon, BiSun } from "react-icons/bi";
 
 
 const Sidebar = () => {
+    const { colorMode, toggleColorMode } = useColorMode();
     return (
         <Box
             height={"100vh"}
@@ -38,6 +39,10 @@ const Sidebar = () => {
                 <Flex direction={"column"} gap={5} cursor={"pointer"}>
 					<SidebarItems />
 				</Flex>
+                {/* Color Mode Toggle */}
+                <Button onClick={toggleColorMode} mt={"auto"} variant={"ghost"} _hover={{ bg: "transparent" }}>
+                    {colorMode === "light" ? <BiMoon size={25} /> : <BiSun size={25} />}
+                </Button>
                 {/* LOGOUT */}
 				<Tooltip
 					hasArrow
@@ -54,7 +59,6 @@ const Sidebar = () => {
 						borderRadius={6}
 						p={2}
 						w={{ base: 10, md: "full" }}
-						mt={"auto"}
 						justifyContent={{ base: "center", md: "flex-start" }}
 					>
 						<BiLogOut size={25} />
