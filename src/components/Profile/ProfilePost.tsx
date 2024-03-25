@@ -19,6 +19,7 @@ import { AiFillHeart } from "react-icons/ai";
 import { FaComment } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import Comment from "../Comment/Comment";
+import PostFooter from "../FeedPosts/PostFooter";
 
 interface ProfilePostProps {
   img: string;
@@ -139,7 +140,6 @@ const ProfilePost = ({ img }: ProfilePostProps) => {
                   alignItems={"start"}
                   maxH={"350px"}
                   overflowY={"auto"}
-				  flexDirection={"column"}
                 >
 
                   {/* COMMENTS */}
@@ -162,7 +162,8 @@ const ProfilePost = ({ img }: ProfilePostProps) => {
                     text="Dummy images"
                   />
                 </VStack>
-                {/* <Divider my={4} bg={"gray.500"} /> */}
+                <Divider my={4} bg={"gray.500"} />
+                <PostFooter />
               </Flex>
             </Flex>
           </ModalBody>
