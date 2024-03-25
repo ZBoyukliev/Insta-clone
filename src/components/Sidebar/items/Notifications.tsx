@@ -22,7 +22,7 @@ const Notifications = () => {
 				p={2}
 				w={{ base: 10, md: "full" }}
 				justifyContent={{ base: "center", md: "flex-start" }}
-				bg={colorMode === "light" ? "#f1f4f7" : "black"}
+				bg={colorMode === "light" ? "white" : "black"}
 			>
 				{colorMode === "light" ? <BiBell size={20} /> : <NotificationsLogo />}
 				<Box display={{ base: "none", md: "block" }}>Notifications</Box>

@@ -24,7 +24,7 @@ const CreatePost = () => {
 					p={2}
 					w={{ base: 10, md: "full" }}
 					justifyContent={{ base: "center", md: "flex-start" }}
-					bg={colorMode === "light" ? "#f1f4f7" : "black"}
+					bg={colorMode === "light" ? "white" : "black"}
 				>
 					{colorMode === "light" ? <CgAddR size={26}/> : <CreatePostLogo />}
 					<Box display={{ base: "none", md: "block" }}>Create</Box>

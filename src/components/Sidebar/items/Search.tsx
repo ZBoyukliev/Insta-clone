@@ -28,7 +28,7 @@ const Search = () => {
 					p={2}
 					w={{ base: 10, md: "full" }}
 					justifyContent={{ base: "center", md: "flex-start" }}
-					bg={colorMode === "light" ? "#f1f4f7" : "black"}
+					bg={colorMode === "light" ? "white" : "black"}
 				>
 					{colorMode === "light" ? <BiSearchAlt2 size={20} /> : <SearchLogo />}
 					<Box display={{ base: "none", md: "block" }}>Search</Box>

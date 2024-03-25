@@ -12,7 +12,7 @@ import { BrowserRouter } from 'react-router-dom'
 const styles = {
   global: (props: GlobalStyleProps) => ({
     body: {
-      bg: mode("#f1f4f7", "black")(props),
+      bg: mode("white", "black")(props), // Changed the light mode background color to white, similar to Instagram's light mode background color.
       color: mode("gray.800", "whiteAlpha.900")(props),
     },
   }),
