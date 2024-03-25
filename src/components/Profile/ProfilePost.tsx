@@ -141,7 +141,6 @@ const ProfilePost = ({ img }: ProfilePostProps) => {
                   maxH={"350px"}
                   overflowY={"auto"}
                 >
-
                   {/* COMMENTS */}
                   <Comment
                     createdAt="1h ago"
@@ -161,45 +160,9 @@ const ProfilePost = ({ img }: ProfilePostProps) => {
                     profilepic="/profilepic.png"
                     text="Dummy images"
                   />
-                  <Comment
-                    createdAt="3h ago"
-                    username="asprogramer98"
-                    profilepic="/profilepic.png"
-                    text="Dummy images"
-                  /><Comment
-                  createdAt="3h ago"
-                  username="asprogramer98"
-                  profilepic="/profilepic.png"
-                  text="Dummy images"
-                /><Comment
-                createdAt="3h ago"
-                username="asprogramer98"
-                profilepic="/profilepic.png"
-                text="Dummy images"
-              /><Comment
-              createdAt="3h ago"
-              username="asprogramer98"
-              profilepic="/profilepic.png"
-              text="Dummy images"
-            /><Comment
-            createdAt="3h ago"
-            username="asprogramer98"
-            profilepic="/profilepic.png"
-            text="Dummy images"
-          /><Comment
-          createdAt="3h ago"
-          username="asprogramer98"
-          profilepic="/profilepic.png"
-          text="Dummy images"
-        /><Comment
-        createdAt="3h ago"
-        username="asprogramer98"
-        profilepic="/profilepic.png"
-        text="Dummy images"
-      />
                 </VStack>
                 <Divider my={4} bg={"gray.500"} />
-                <PostFooter isProfilePage={true}/>
+                <PostFooter isProfilePage={true} />
               </Flex>
             </Flex>
           </ModalBody>
