@@ -163,7 +163,7 @@ const ProfilePost = ({ img }: ProfilePostProps) => {
                   />
                 </VStack>
                 <Divider my={4} bg={"gray.500"} />
-                <PostFooter />
+                <PostFooter isProfilePage={true}/>
               </Flex>
             </Flex>
           </ModalBody>
