@@ -19,7 +19,7 @@ const ColorModeButton = () => {
                 onClick={toggleColorMode}
                 alignItems={"center"}
                 gap={4}
-                _hover={{ bg: "whiteAlpha.400" }}
+                _hover={{ bg: colorMode === "light" ? "blackAlpha.400" : "whiteAlpha.400" }}
                 borderRadius={6}
                 p={2}
                 w={{ base: 10, md: "full" }}

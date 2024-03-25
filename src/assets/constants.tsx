@@ -1,7 +1,7 @@
 export const InstagramLogo = () => (
 	<svg
 		aria-label='Instagram'
-		color='rgb(245, 245, 245)'
+		color='rgb(140, 140, 140)'
 		fill='rgb(245, 245, 245)'
 		height='29'
 		role='img'

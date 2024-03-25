@@ -1,7 +1,9 @@
-import { Avatar, Box, Link, Tooltip } from "@chakra-ui/react";
+import { Avatar, Box, Link, Tooltip, useColorMode } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 
 const ProfileLink = () => {
+
+	const { colorMode } = useColorMode();
 
 	return (
 		<Tooltip
@@ -18,7 +20,7 @@ const ProfileLink = () => {
 				display={"flex"}
 				alignItems={"center"}
 				gap={4}
-				_hover={{ bg: "whiteAlpha.400" }}
+				_hover={{ bg: colorMode === "light" ? "blackAlpha.400" : "whiteAlpha.400" }}
 				borderRadius={6}
 				p={2}
 				w={{ base: 10, md: "full" }}
