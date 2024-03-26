@@ -1,6 +1,6 @@
 import { Box, Button, Flex, Image, Input, Text, VStack } from "@chakra-ui/react"
 import { useState } from "react"
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 const AuthForm = () => {
 
@@ -10,14 +10,7 @@ const AuthForm = () => {
         password: "",
         confirmPassword: ""
     });
-    const navigate = useNavigate()
-
-    const handleAuth = () => {
-        if(!inputs.email || !inputs.password) {
-            return alert('fields')
-        }
-        navigate('/')
-    }
+    // const navigate = useNavigate();
 
     return (
         <>
@@ -27,7 +20,7 @@ const AuthForm = () => {
                     <Input placeholder='Email' fontSize={14} type="email" value={inputs.email} onChange={(e) => setInputs({ ...inputs, email: e.target.value })} />
                     <Input placeholder='Password' fontSize={14} type="password" value={inputs.password} onChange={(e) => setInputs({ ...inputs, password: e.target.value })}/>
                     {!isLogin && <Input placeholder='Confirm password' fontSize={14} type="password" value={inputs.confirmPassword} onChange={(e) => setInputs({ ...inputs, confirmPassword: e.target.value })}/>}
-                    <Button w={"full"} colorScheme="blue" size={"sm"} fontSize={16} onClick={handleAuth}>
+                    <Button w={"full"} colorScheme="blue" size={"sm"} fontSize={16}>
                         {isLogin ? "Login" : "Sign up"}
                     </Button>
                     <Flex alignItems={"center"} justifyContent={"center"} my={4} w={"full"}>
