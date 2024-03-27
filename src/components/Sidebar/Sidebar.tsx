@@ -3,9 +3,12 @@ import { Link as RouterLink } from "react-router-dom";
 import { InstagramLogo, InstagramMobileLogo } from "../../assets/constants";
 import SidebarItems from "./SidebarItems";
 import { BiLogOut } from "react-icons/bi";
+import useLogout from "../../hooks/useLogout";
 
 
 const Sidebar = () => {
+
+	const { handleLogout, isLoggingOut } = useLogout();
 
     return (
         <Box
@@ -50,6 +53,7 @@ const Sidebar = () => {
                     display={{ base: "block", md: "none" }}
                 >
                     <Flex
+						onClick={handleLogout}
                         alignItems={"center"}
                         gap={4}
                         _hover={{ bg: "whiteAlpha.400" }}
@@ -64,6 +68,7 @@ const Sidebar = () => {
                             display={{ base: "none", md: "block" }}
                             variant={"ghost"}
                             _hover={{ bg: "transparent" }}
+							isLoading={isLoggingOut}
                         >
                             Logout
                         </Button>
