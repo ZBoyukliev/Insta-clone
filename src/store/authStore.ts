@@ -14,7 +14,7 @@ export interface User {
 }
 
 const useAuthStore = create((set) => ({
-    user: null as User | null,
+    user: JSON.parse(localStorage.getItem("user-info") || 'null'),
     login: (user: User) => set({ user }),
     logout: () => set({ user: null }),
     setUser: (user: User) => set({ user }),
