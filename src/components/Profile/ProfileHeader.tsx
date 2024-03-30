@@ -1,9 +1,7 @@
 import { Avatar, AvatarGroup, Button, Flex, Text, VStack } from "@chakra-ui/react";
-import { useState } from "react";
 
 const ProfileHeader = () => {
 
-  const [isFollowing, setIsFollowing] = useState(false);
 
   return (
     <Flex gap={{ base: 4, sm: 10 }} py={10} direction={{ base: "column", sm: "row" }}>
@@ -29,15 +27,6 @@ const ProfileHeader = () => {
               Edit Profile
             </Button>
           </Flex>
-          <Button
-            bg={"blue.500"}
-            color={"white"}
-            _hover={{ bg: "blue.600" }}
-            size={{ base: "xs", md: "sm" }}
-            onClick={() => setIsFollowing(!isFollowing)}
-          >
-            {isFollowing ? "Unfollow" : "Follow"}
-          </Button>
 
         </Flex>
         <Flex alignItems={"center"} gap={{ base: 2, sm: 4 }}>
