@@ -5,6 +5,7 @@ import Signup from "./Signup";
 import GoogleAuth from "./GoogleAuth";
 
 const AuthForm = () => {
+  
   const [isLogin, setIsLogin] = useState(true);
 
   return (

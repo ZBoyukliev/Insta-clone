@@ -11,7 +11,8 @@ export interface User {
   following?: string[];
   posts?: string[];
   createdAt?: number;
-}
+};
+
 
 const useAuthStore = create((set) => ({
     user: JSON.parse(localStorage.getItem("user-info") || 'null'),

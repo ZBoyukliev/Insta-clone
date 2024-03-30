@@ -7,7 +7,6 @@ const SuggestedHeader = () => {
 
 	const { handleLogout, isLoggingOut } = useLogout();
 	const authUser = useAuthStore((state) => (state as { user: User}).user);
-
 	if (!authUser) return null;
 
 	return (
