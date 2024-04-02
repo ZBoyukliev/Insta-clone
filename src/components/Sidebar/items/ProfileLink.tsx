@@ -1,9 +1,11 @@
 import { Avatar, Box, Link, Tooltip, useColorMode } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
+import useAuthStore from "../../../store/authStore";
 
 const ProfileLink = () => {
 
 	const { colorMode } = useColorMode();
+	const authUser = useAuthStore((state: any) => state.user);
 
 	return (
 		<Tooltip
@@ -16,7 +18,8 @@ const ProfileLink = () => {
 		>
 			<Link
 				as={RouterLink}
-				to={"/asprogramer"}
+				to={`/${authUser?.username}`}
+			
 				display={"flex"}
 				alignItems={"center"}
 				gap={4}

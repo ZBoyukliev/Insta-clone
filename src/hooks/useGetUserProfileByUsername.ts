@@ -3,9 +3,9 @@ import useShowToast from "./useShowToast";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { firestore } from "../firebase/firebase";
 import useUserProfileStore from "../store/userProfileStore";
-import { User } from "../store/authStore"; // Assuming the User type is defined here similar to file_context_3
+import { User } from "../store/authStore";
 
-const useGetUserProfileByUsername = (username: string) => {
+const useGetUserProfileByUsername = (username: string | null) => {
 	const [isLoading, setIsLoading] = useState(true);
 	const showToast = useShowToast();
 	const userProfileStore = useUserProfileStore() as {
@@ -16,6 +16,12 @@ const useGetUserProfileByUsername = (username: string) => {
 	const setUserProfile = userProfileStore.setUserProfile;
 
 	useEffect(() => {
+		if (!username) {
+			showToast("Error", "Username is null", "error");
+			setIsLoading(false);
+			return;
+		}
+
 		const getUserProfile = async () => {
 			setIsLoading(true);
 			try {
