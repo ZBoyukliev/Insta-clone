@@ -1,11 +1,30 @@
-import { Avatar, AvatarGroup, Button, Flex, Text, VStack } from "@chakra-ui/react";
+import {
+  Avatar,
+  AvatarGroup,
+  Button,
+  Flex,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
+import useUserProfileStore from "../../store/userProfileStore";
 
 const ProfileHeader = () => {
+  const userProfileStore: any = useUserProfileStore();
+  const { userProfile } = userProfileStore;
 
   return (
-    <Flex gap={{ base: 4, sm: 10 }} py={10} direction={{ base: "column", sm: "row" }}>
-      <AvatarGroup size={{ base: "xl", md: "2xl" }} justifySelf={"center"} alignSelf={"flex-start"} mx={"auto"}>
-        <Avatar src={'/profilepic.png'} />
+    <Flex
+      gap={{ base: 4, sm: 10 }}
+      py={10}
+      direction={{ base: "column", sm: "row" }}
+    >
+      <AvatarGroup
+        size={{ base: "xl", md: "2xl" }}
+        justifySelf={"center"}
+        alignSelf={"flex-start"}
+        mx={"auto"}
+      >
+        <Avatar src={userProfile.profilePicURL} />
       </AvatarGroup>
       <VStack alignItems={"start"} gap={2} mx={"auto"} flex={1}>
         <Flex
@@ -15,7 +34,9 @@ const ProfileHeader = () => {
           alignItems={"center"}
           w={"full"}
         >
-          <Text fontSize={{ base: "sm", md: "lg" }}>as_programer</Text>
+          <Text fontSize={{ base: "sm", md: "lg" }}>
+            {userProfile.username}
+          </Text>
           <Flex gap={4} alignItems={"center"} justifyContent={"center"}>
             <Button
               bg={"white"}
@@ -26,39 +47,36 @@ const ProfileHeader = () => {
               Edit Profile
             </Button>
           </Flex>
-
         </Flex>
         <Flex alignItems={"center"} gap={{ base: 2, sm: 4 }}>
           <Text fontSize={{ base: "xs", md: "sm" }}>
-            <Text as='span' fontWeight={"bold"} mr={1}>
-              {4}
+            <Text as="span" fontWeight={"bold"} mr={1}>
+              {userProfile.posts.length}
             </Text>
             Posts
           </Text>
           <Text fontSize={{ base: "xs", md: "sm" }}>
-            <Text as='span' fontWeight={"bold"} mr={1}>
-              {179}
+            <Text as="span" fontWeight={"bold"} mr={1}>
+              {userProfile.followers.length}
             </Text>
             Followers
           </Text>
           <Text fontSize={{ base: "xs", md: "sm" }}>
-            <Text as='span' fontWeight={"bold"} mr={1}>
-              {15}
+            <Text as="span" fontWeight={"bold"} mr={1}>
+              {userProfile.following.length}
             </Text>
             Following
           </Text>
         </Flex>
         <Flex alignItems={"center"} gap={4}>
-					<Text fontSize={"sm"} fontWeight={"bold"}>
-						As programer
-					</Text>
-				</Flex>
-        <Text fontSize={"sm"}>
-						Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-					</Text>
+          <Text fontSize={"sm"} fontWeight={"bold"}>
+            {userProfile.fullName}
+          </Text>
+        </Flex>
+        <Text fontSize={"sm"}>{userProfile.bio}</Text>
       </VStack>
     </Flex>
-  )
-}
+  );
+};
 
 export default ProfileHeader;
