@@ -7,10 +7,13 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import useUserProfileStore from "../../store/userProfileStore";
+import useAuthStore from "../../store/authStore";
 
 const ProfileHeader = () => {
   const userProfileStore: any = useUserProfileStore();
   const { userProfile } = userProfileStore;
+  const authUser = useAuthStore((state: any) => state.user);
+  const visitingOwnProfileAndAuth = authUser && authUser.username === userProfile.username;
 
   return (
     <Flex
@@ -37,7 +40,7 @@ const ProfileHeader = () => {
           <Text fontSize={{ base: "sm", md: "lg" }}>
             {userProfile.username}
           </Text>
-          <Flex gap={4} alignItems={"center"} justifyContent={"center"}>
+          {visitingOwnProfileAndAuth && <Flex gap={4} alignItems={"center"} justifyContent={"center"}>
             <Button
               bg={"white"}
               color={"black"}
@@ -46,7 +49,8 @@ const ProfileHeader = () => {
             >
               Edit Profile
             </Button>
-          </Flex>
+          </Flex>}
+
         </Flex>
         <Flex alignItems={"center"} gap={{ base: 2, sm: 4 }}>
           <Text fontSize={{ base: "xs", md: "sm" }}>
