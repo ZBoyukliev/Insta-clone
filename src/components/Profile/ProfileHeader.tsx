@@ -53,9 +53,9 @@ const ProfileHeader = () => {
           </Flex>}
           {visitingAnotherProfileAndAuth && <Flex gap={4} alignItems={"center"} justifyContent={"center"}>
             <Button
-              bg={"white"}
-              color={"black"}
-              _hover={{ bg: "whiteAlpha.800" }}
+              bg={"blue.400"}
+              color={"white"}
+              _hover={{ bg: "blue.600" }}
               size={{ base: "xs", md: "sm" }}
             >
               Follow
