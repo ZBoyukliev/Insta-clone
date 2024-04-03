@@ -14,6 +14,7 @@ const ProfileHeader = () => {
   const { userProfile } = userProfileStore;
   const authUser = useAuthStore((state: any) => state.user);
   const visitingOwnProfileAndAuth = authUser && authUser.username === userProfile.username;
+  const visitingAnotherProfileAndAuth = authUser && authUser.username !== userProfile.username;
 
   return (
     <Flex
@@ -48,6 +49,16 @@ const ProfileHeader = () => {
               size={{ base: "xs", md: "sm" }}
             >
               Edit Profile
+            </Button>
+          </Flex>}
+          {visitingAnotherProfileAndAuth && <Flex gap={4} alignItems={"center"} justifyContent={"center"}>
+            <Button
+              bg={"white"}
+              color={"black"}
+              _hover={{ bg: "whiteAlpha.800" }}
+              size={{ base: "xs", md: "sm" }}
+            >
+              Follow
             </Button>
           </Flex>}
 
