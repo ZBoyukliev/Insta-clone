@@ -8,10 +8,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { CommentLogo, NotificationsLogo } from "../../assets/constants";
-
-interface PostFooterProps {
-  isProfilePage: boolean;
-}
+import { PostFooterProps } from "./FeedPost";
 
 const PostFooter = ({ isProfilePage }: PostFooterProps) => {
   return (

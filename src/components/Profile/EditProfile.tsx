@@ -15,7 +15,7 @@ import {
     ModalOverlay,
     Stack,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import useAuthStore from "../../store/authStore";
 
 const EditProfile = ({
@@ -30,11 +30,18 @@ const EditProfile = ({
         username: "",
         bio: "",
     });
-	const authUser = useAuthStore((state:any) => state.user);
+    const authUser = useAuthStore((state: any) => state.user);
+	const fileRef = useRef<HTMLInputElement>(null);
 
     const handleEditProfile = async () => {
-		console.log(inputs);
-	};
+        console.log(inputs);
+    };
+
+    const handleFileClick = () => {
+        if (fileRef.current) {
+            fileRef.current.click();
+        }
+    };
 
     return (
         <>
@@ -67,36 +74,51 @@ const EditProfile = ({
                                         <Center>
                                             <Avatar size="xl" src={""} border={"2px solid white "} />
                                         </Center>
-                                        <Center w="full">
-                                            <Button w="full">Edit Profile Picture</Button>
-                                        </Center>
+                                        <Center w='full'>
+											<Button w='full' onClick={handleFileClick}>
+												Edit Profile Picture
+											</Button>
+										</Center>
+										<Input type='file' hidden ref={fileRef} />
                                     </Stack>
                                 </FormControl>
 
                                 <FormControl>
                                     <FormLabel fontSize={"sm"}>Full Name</FormLabel>
-                                    <Input placeholder={"Full Name"}
-                                        size={"sm"} type={"text"}
+                                    <Input
+                                        placeholder={"Full Name"}
+                                        size={"sm"}
+                                        type={"text"}
                                         value={inputs.fullName || authUser.fullName}
-                                        onChange={(e) => setInputs({ ...inputs, fullName: e.target.value })}
+                                        onChange={(e) =>
+                                            setInputs({ ...inputs, fullName: e.target.value })
+                                        }
                                     />
                                 </FormControl>
 
                                 <FormControl>
                                     <FormLabel fontSize={"sm"}>Username</FormLabel>
-                                    <Input placeholder={"Username"}
-                                        size={"sm"} type={"text"}
+                                    <Input
+                                        placeholder={"Username"}
+                                        size={"sm"}
+                                        type={"text"}
                                         value={inputs.username || authUser.username}
-                                        onChange={(e) => setInputs({ ...inputs, username: e.target.value })}
+                                        onChange={(e) =>
+                                            setInputs({ ...inputs, username: e.target.value })
+                                        }
                                     />
                                 </FormControl>
 
                                 <FormControl>
                                     <FormLabel fontSize={"sm"}>Bio</FormLabel>
-                                    <Input placeholder={"Bio"}
-                                        size={"sm"} type={"text"}
+                                    <Input
+                                        placeholder={"Bio"}
+                                        size={"sm"}
+                                        type={"text"}
                                         value={inputs.bio || authUser.bio}
-                                        onChange={(e) => setInputs({ ...inputs, bio: e.target.value })}
+                                        onChange={(e) =>
+                                            setInputs({ ...inputs, bio: e.target.value })
+                                        }
                                     />
                                 </FormControl>
 
@@ -117,7 +139,7 @@ const EditProfile = ({
                                         size="sm"
                                         w="full"
                                         _hover={{ bg: "blue.500" }}
-										onClick={handleEditProfile}
+                                        onClick={handleEditProfile}
                                     >
                                         Submit
                                     </Button>
