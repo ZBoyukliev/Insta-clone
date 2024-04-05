@@ -12,7 +12,6 @@ const useLogout = () => {
 		try {
 			await signOut();
 			localStorage.removeItem("user-info");
-            console.log('Logged out')
 			logoutUser();
 		} catch (error) {
 			const errorMessage = (error as { message: string })?.message || "An unknown error occurred";
