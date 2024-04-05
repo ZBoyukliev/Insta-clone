@@ -17,6 +17,9 @@ import {
 } from "@chakra-ui/react";
 import { useRef, useState } from "react";
 import useAuthStore from "../../store/authStore";
+import usePreviewImg from "../../hooks/usePreviewImg";
+import useEditProfile from "../../hooks/useEditProfile";
+import useShowToast from "../../hooks/useShowToast";
 
 const EditProfile = ({
     isOpen,
@@ -31,16 +34,26 @@ const EditProfile = ({
         bio: "",
     });
     const authUser = useAuthStore((state: any) => state.user);
-	const fileRef = useRef<HTMLInputElement>(null);
+    const fileRef = useRef<HTMLInputElement>(null);
+    const { handleImageChange, selectedFile, setSelectedFile } = usePreviewImg();
+    const { isUpdating, editProfile } = useEditProfile();
+    const showToast = useShowToast();
 
     const handleEditProfile = async () => {
-        console.log(inputs);
+        try {
+            await editProfile(inputs, selectedFile);
+            setSelectedFile(null);
+            onClose();
+        } catch (error: any) {
+            showToast("Error", error.message, "error");
+        }
     };
 
     const handleFileClick = () => {
         if (fileRef.current) {
             fileRef.current.click();
         }
+
     };
 
     return (
@@ -72,14 +85,14 @@ const EditProfile = ({
                                 <FormControl>
                                     <Stack direction={["column", "row"]} spacing={6}>
                                         <Center>
-                                            <Avatar size="xl" src={""} border={"2px solid white "} />
+                                            <Avatar size="xl" border={"2px solid white "} src={selectedFile || authUser.profilePicURL} />
                                         </Center>
                                         <Center w='full'>
-											<Button w='full' onClick={handleFileClick}>
-												Edit Profile Picture
-											</Button>
-										</Center>
-										<Input type='file' hidden ref={fileRef} />
+                                            <Button w='full' onClick={handleFileClick}>
+                                                Edit Profile Picture
+                                            </Button>
+                                        </Center>
+                                        <Input type='file' hidden ref={fileRef} onChange={handleImageChange} />
                                     </Stack>
                                 </FormControl>
 
@@ -140,6 +153,7 @@ const EditProfile = ({
                                         w="full"
                                         _hover={{ bg: "blue.500" }}
                                         onClick={handleEditProfile}
+										isLoading={isUpdating}
                                     >
                                         Submit
                                     </Button>
