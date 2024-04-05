@@ -6,12 +6,14 @@ import useUserProfileStore from "../store/userProfileStore";
 import { User } from "../store/authStore";
 
 const useGetUserProfileByUsername = (username: string | null) => {
+
 	const [isLoading, setIsLoading] = useState(true);
 	const showToast = useShowToast();
 	const userProfileStore = useUserProfileStore() as {
 		userProfile: User | null;
 		setUserProfile: (userProfile: User | null) => void;
 	};
+	
 	const userProfile: User | null = userProfileStore.userProfile;
 	const setUserProfile = userProfileStore.setUserProfile;
 

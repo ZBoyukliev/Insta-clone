@@ -7,7 +7,7 @@ import useAuthStore,  {User} from "../store/authStore";
 interface LoginInputs {
   email: string;
   password: string;
-}
+};
 
 const useLogin = () => {
 	const showToast = useShowToast();

@@ -19,7 +19,6 @@ const useEditProfile = () => {
 	const setAuthUser = useAuthStore((state:any) => state.setUser);
 	const setUserProfile = useUserProfileStore((state:any) => state.setUserProfile);
 
-
 	const showToast = useShowToast();
 
 	const editProfile = async (inputs: Inputs, selectedFile: string | null) => {

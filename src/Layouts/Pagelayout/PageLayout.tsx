@@ -9,6 +9,7 @@ import { ReactNode } from "react";
 // instead of adding the Sidebar component to every page, we can add it only once to the PageLayout component and wrap the children with it. This way, we can have a sidebar on every page except the AuthPage.
 
 const PageLayout = ({ children }: { children: ReactNode }) => {
+	
 	const { pathname } = useLocation();
 	const [user, loading] = useAuthState(auth);
 	const canRenderSidebar = pathname !== "/auth" && user;

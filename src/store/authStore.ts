@@ -13,7 +13,6 @@ export interface User {
   createdAt?: number;
 };
 
-
 const useAuthStore = create((set) => ({
     user: JSON.parse(localStorage.getItem("user-info") || 'null'),
     login: (user: User) => set({ user }),
