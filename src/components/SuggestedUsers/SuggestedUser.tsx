@@ -1,0 +1,70 @@
+import { Avatar, Box, Button, Flex, VStack } from "@chakra-ui/react";
+import useFollowUser from "../../hooks/useFollowUser";
+import useAuthStore, { User } from "../../store/authStore";
+import { Link } from "react-router-dom";
+
+interface SuggestedUserProps {
+  user: User;
+  setUser: (user: User) => void;
+}
+
+const SuggestedUser = ({ user, setUser }: SuggestedUserProps) => {
+  // Ensure user object and its uid property are available before proceeding
+  if (!user || typeof user.uid === 'undefined') {
+    console.error('User object or user UID is undefined');
+    return null; // Return null to avoid rendering the component if user or user.uid is undefined
+  }
+
+  const { isFollowing, isUpdating, handleFollowUser } = useFollowUser(user.uid);
+  const authUser = useAuthStore((state: any) => state.user);
+
+  const onFollowUser = async () => {
+    await handleFollowUser();
+    if (user.followers && authUser.uid) {
+      setUser({
+        ...user,
+        followers: isFollowing
+          ? user.followers.filter((follower: any) => follower.uid !== authUser.uid)
+          : [...(user.followers || []), authUser],
+      });
+    }
+  };
+
+  return (
+    <Flex justifyContent={"space-between"} alignItems={"center"} w={"full"}>
+      <Flex alignItems={"center"} gap={2}>
+        <Link to={`/${user.username}`}>
+          <Avatar src={user.profilePicURL} size={"md"} />
+        </Link>
+        <VStack spacing={2} alignItems={"flex-start"}>
+          <Link to={`/${user.username}`}>
+            <Box fontSize={12} fontWeight={"bold"}>
+              {user.fullName}
+            </Box>
+          </Link>
+          <Box fontSize={11} color={"gray.500"}>
+            {user.followers ? user.followers.length : 0} followers
+          </Box>
+        </VStack>
+      </Flex>
+      {authUser.uid !== user.uid && (
+        <Button
+          fontSize={13}
+          bg={"transparent"}
+          p={0}
+          h={"max-content"}
+          fontWeight={"medium"}
+          color={"blue.400"}
+          cursor={"pointer"}
+          _hover={{ color: "white" }}
+          onClick={onFollowUser}
+          isLoading={isUpdating}
+        >
+          {isFollowing ? "Unfollow" : "Follow"}
+        </Button>
+      )}
+    </Flex>
+  );
+};
+
+export default SuggestedUser;
