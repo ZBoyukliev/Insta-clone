@@ -9,10 +9,10 @@ interface SuggestedUserProps {
 }
 
 const SuggestedUser = ({ user, setUser }: SuggestedUserProps) => {
-  // Ensure user object and its uid property are available before proceeding
+  
   if (!user || typeof user.uid === 'undefined') {
     console.error('User object or user UID is undefined');
-    return null; // Return null to avoid rendering the component if user or user.uid is undefined
+    return null; 
   }
 
   const { isFollowing, isUpdating, handleFollowUser } = useFollowUser(user.uid);
