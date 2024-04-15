@@ -18,7 +18,7 @@ import { AiFillHeart } from "react-icons/ai";
 import { FaComment } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import Comment from "../Comment/Comment";
-import PostFooter from "../FeedPosts/PostFooter";
+import PostFooter from "../FeedPosts/PostFooter"; // Updated import
 import useUserProfileStore from "../../store/userProfileStore";
 import useAuthStore from "../../store/authStore";
 import useShowToast from "../../hooks/useShowToast";
@@ -165,7 +165,7 @@ const ProfilePost = ({ post }: any) => {
 								</VStack>
 								<Divider my={4} bg={"gray.8000"} />
 
-								<PostFooter isProfilePage={true} />
+								<PostFooter post={post} isProfilePage={true} creatorProfile={userProfile}/>
 							</Flex>
 						</Flex>
 					</ModalBody>
