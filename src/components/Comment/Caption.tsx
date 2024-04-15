@@ -14,11 +14,11 @@ const Caption = ({ post }: any) => {
 			<Flex direction={"column"}>
 				<Flex gap={2} alignItems={"center"}>
 					<Link to={`/${userProfile.username}`}>
-						<Text fontWeight={"bold"} fontSize={12}>
+						<Text fontWeight={"bold"} fontSize={16}>
 							{userProfile.username}
 						</Text>
 					</Link>
-					<Text fontSize={14}>{post.caption}</Text>
+					<Text fontSize={16}>{post.caption}</Text>
 				</Flex>
 				<Text fontSize={12} color={"gray"}>
 					{timeAgo(post.createdAt)}

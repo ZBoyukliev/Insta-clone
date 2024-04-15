@@ -1,21 +1,20 @@
-import PostHeader from "./PostHeader"
-import PostFooter from "./PostFooter"
 import { Box, Image } from "@chakra-ui/react";
+import PostFooter from "./PostFooter";
+import PostHeader from "./PostHeader";
+import useGetUserProfileById from "../../hooks/useGetUserProfileById";
 
-export interface PostFooterProps {
-  isProfilePage?: boolean;
-}
+const FeedPost = ({ post }: any) => {
+	const { userProfile } = useGetUserProfileById(post.createdBy);
 
-const FeedPost = ({ isProfilePage = false }: PostFooterProps = {}) => { 
-  return (
-    <>
-      <PostHeader />
-      <Box my={2} borderRadius={4} overflow={"hidden"}>
-        <Image src="/img2.png" alt="profile pic" />
-      </Box>
-      <PostFooter isProfilePage={isProfilePage}/>
-    </>
-  )
-}
+	return (
+		<>
+			<PostHeader post={post} creatorProfile={userProfile} />
+			<Box my={2} borderRadius={4} overflow={"hidden"}>
+				<Image src={post.imageURL} alt={"FEED POST IMG"} />
+			</Box>
+			<PostFooter post={post} creatorProfile={userProfile} isProfilePage={true}/>
+		</>
+	);
+};
 
-export default FeedPost
+export default FeedPost;
