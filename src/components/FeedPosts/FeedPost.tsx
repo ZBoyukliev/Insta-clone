@@ -4,7 +4,7 @@ import PostHeader from "./PostHeader";
 import useGetUserProfileById from "../../hooks/useGetUserProfileById";
 
 const FeedPost = ({ post }: any) => {
-  
+
 	const { userProfile } = useGetUserProfileById(post.createdBy);
 
 	return (
@@ -13,7 +13,7 @@ const FeedPost = ({ post }: any) => {
 			<Box my={2} borderRadius={4} overflow={"hidden"}>
 				<Image src={post.imageURL} alt={"FEED POST IMG"} />
 			</Box>
-			<PostFooter post={post} creatorProfile={userProfile} isProfilePage/>
+			<PostFooter post={post} creatorProfile={userProfile} isProfilePage={false} />
 		</>
 	);
 };
