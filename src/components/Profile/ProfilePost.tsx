@@ -160,7 +160,7 @@ const ProfilePost = ({ post }: any) => {
 									{post.caption && <Caption post={post} />}
 									{/* COMMENTS */}
 									{post.comments.map((comment: any) => (
-										<Comment key={comment.id} createdAt={comment.createdAt} username={comment.username} profilepic={comment.profilepic} text={comment.text} />
+										<Comment key={comment.id} comment={comment} />
 									))}
 								</VStack>
 								<Divider my={4} bg={"gray.8000"} />
