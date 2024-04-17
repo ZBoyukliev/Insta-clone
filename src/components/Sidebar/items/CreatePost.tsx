@@ -14,6 +14,8 @@ import {
 	ModalOverlay,
 	Textarea,
 	Tooltip,
+	useColorMode,
+	useColorModeValue,
 	useDisclosure,
 } from "@chakra-ui/react";
 import { CreatePostLogo } from "../../../assets/constants";
@@ -28,8 +30,10 @@ import { addDoc, arrayUnion, collection, doc, updateDoc } from "firebase/firesto
 import { firestore, storage } from "../../../firebase/firebase";
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
 import usePostStore from "../../../store/postStore";
+import { FaRegSquarePlus } from "react-icons/fa6";
 
 const CreatePost = () => {
+	const { colorMode } = useColorMode();
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const [caption, setCaption] = useState("");
 	const imageRef = useRef<HTMLInputElement | null>(null); // Updated type for imageRef
@@ -61,14 +65,15 @@ const CreatePost = () => {
 				<Flex
 					alignItems={"center"}
 					gap={4}
-					_hover={{ bg: "whiteAlpha.400" }}
+					_hover={{ bg: colorMode === "light" ? "blackAlpha.400" : "whiteAlpha.400" }}
 					borderRadius={6}
 					p={2}
 					w={{ base: 10, md: "full" }}
 					justifyContent={{ base: "center", md: "flex-start" }}
 					onClick={onOpen}
 				>
-					<CreatePostLogo />
+					{/* <CreatePostLogo /> */}
+				{colorMode === "light" ? <FaRegSquarePlus size={24} /> : <CreatePostLogo />}
 					<Box display={{ base: "none", md: "block" }}>Create</Box>
 				</Flex>
 			</Tooltip>
@@ -88,11 +93,19 @@ const CreatePost = () => {
 
 						<Input type='file' hidden ref={imageRef} onChange={handleImageChange} />
 
-						<BsFillImageFill
-							onClick={() => imageRef.current?.click()} // Updated to use optional chaining
-							style={{ marginTop: "15px", marginLeft: "5px", cursor: "pointer" }}
-							size={16}
-						/>
+						<Flex
+							alignItems="center"
+							gap={2}
+							mt={4}
+							cursor="pointer"
+							onClick={() => imageRef.current?.click()} 
+						>
+							<BsFillImageFill
+								style={{ color: useColorModeValue("black", "gray.200") }}
+								size={6}
+							/>
+							<Box color={useColorModeValue("black", "gray.200")}>Add Image</Box>
+						</Flex>
 						{selectedFile && (
 							<Flex mt={5} w={"full"} position={"relative"} justifyContent={"center"}>
 								<Image src={selectedFile} alt='Selected img' />
