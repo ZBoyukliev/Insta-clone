@@ -12,6 +12,7 @@ import {
 	ModalOverlay,
 	Text,
 	VStack,
+	useColorMode,
 	useDisclosure,
 } from "@chakra-ui/react";
 import { AiFillHeart } from "react-icons/ai";
@@ -30,6 +31,7 @@ import usePostStore from "../../store/postStore";
 import Caption from "../Comment/Caption";
 
 const ProfilePost = ({ post }: any) => {
+	const { colorMode } = useColorMode();
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const userProfile = useUserProfileStore((state: any) => state.userProfile);
 	const authUser = useAuthStore((state:any ) => state.user);
@@ -76,7 +78,7 @@ const ProfilePost = ({ post }: any) => {
 			>
 				<Flex
 					opacity={0}
-					_hover={{ opacity: 1 }}
+					_hover={{ opacity: colorMode === "light" ? 0.6 : 0.9 }}
 					position={"absolute"}
 					top={0}
 					left={0}
@@ -89,15 +91,15 @@ const ProfilePost = ({ post }: any) => {
 				>
 					<Flex alignItems={"center"} justifyContent={"center"} gap={50}>
 						<Flex>
-							<AiFillHeart size={20} />
-							<Text fontWeight={"bold"} ml={2}>
+							<AiFillHeart size={20} color={colorMode === "light" ? "white" : undefined} />
+							<Text fontWeight={"bold"} ml={2} color={colorMode === "light" ? "white" : undefined}>
 								{post.likes.length}
 							</Text>
 						</Flex>
 
 						<Flex>
-							<FaComment size={20} />
-							<Text fontWeight={"bold"} ml={2}>
+							<FaComment size={20} color={colorMode === "light" ? "white" : undefined} />
+							<Text fontWeight={"bold"} ml={2} color={colorMode === "light" ? "white" : undefined}>
 								{post.comments.length}
 							</Text>
 						</Flex>
@@ -176,3 +178,4 @@ const ProfilePost = ({ post }: any) => {
 };
 
 export default ProfilePost;
+
