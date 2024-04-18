@@ -153,7 +153,7 @@ const EditProfile = ({
                                         w="full"
                                         _hover={{ bg: "blue.500" }}
                                         onClick={handleEditProfile}
-										isLoading={isUpdating}
+                                        isLoading={isUpdating}
                                     >
                                         Submit
                                     </Button>
@@ -168,3 +168,4 @@ const EditProfile = ({
 };
 
 export default EditProfile;
+
