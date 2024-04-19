@@ -14,6 +14,7 @@ import {
     ModalHeader,
     ModalOverlay,
     Stack,
+    useColorMode,
 } from "@chakra-ui/react";
 import { useRef, useState } from "react";
 import useAuthStore from "../../store/authStore";
@@ -33,6 +34,7 @@ const EditProfile = ({
         username: "",
         bio: "",
     });
+    const { colorMode } = useColorMode();
     const authUser = useAuthStore((state: any) => state.user);
     const fileRef = useRef<HTMLInputElement>(null);
     const { handleImageChange, selectedFile, setSelectedFile } = usePreviewImg();
@@ -61,7 +63,7 @@ const EditProfile = ({
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent
-                    bg={"black"}
+                    bg={colorMode === "light" ? "white" : "black"} 
                     boxShadow={"xl"}
                     border={"1px solid gray"}
                     mx={3}
@@ -70,12 +72,12 @@ const EditProfile = ({
                     <ModalCloseButton />
                     <ModalBody>
                         {/* Container Flex */}
-                        <Flex bg={"black"}>
+                        <Flex bg={colorMode === "light" ? "white" : "black"}>
                             <Stack
                                 spacing={4}
                                 w={"full"}
                                 maxW={"md"}
-                                bg={"black"}
+                                bg={colorMode === "light" ? "white" : "black"}
                                 p={6}
                                 my={0}
                             >
