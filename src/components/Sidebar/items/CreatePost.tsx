@@ -65,6 +65,7 @@ const CreatePost = () => {
 				<Flex
 					alignItems={"center"}
 					gap={4}
+					bg={colorMode === "light" ? "white" : "black"}
 					_hover={{ bg: colorMode === "light" ? "blackAlpha.400" : "whiteAlpha.400" }}
 					borderRadius={6}
 					p={2}
@@ -73,7 +74,7 @@ const CreatePost = () => {
 					onClick={onOpen}
 				>
 					{/* <CreatePostLogo /> */}
-				{colorMode === "light" ? <FaRegSquarePlus size={24} /> : <CreatePostLogo />}
+					{colorMode === "light" ? <FaRegSquarePlus size={24} /> : <CreatePostLogo />}
 					<Box display={{ base: "none", md: "block" }}>Create</Box>
 				</Flex>
 			</Tooltip>
@@ -81,7 +82,7 @@ const CreatePost = () => {
 			<Modal isOpen={isOpen} onClose={onClose} size='xl'>
 				<ModalOverlay />
 
-				<ModalContent bg={"black"} border={"1px solid gray"}>
+				<ModalContent bg={colorMode === "light" ? "white" : "black"} border={"1px solid gray"}>
 					<ModalHeader>Create Post</ModalHeader>
 					<ModalCloseButton />
 					<ModalBody pb={6}>
