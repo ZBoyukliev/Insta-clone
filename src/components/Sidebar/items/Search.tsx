@@ -61,9 +61,10 @@ const Search = () => {
 					<Box display={{ base: "none", md: "block" }}>Search</Box>
 				</Flex>
 			</Tooltip>
-			<Modal isOpen={isOpen} onClose={onClose} motionPreset='slideInLeft'>
+					
+			<Modal isOpen={isOpen} onClose={onClose} motionPreset='slideInLeft' >
 				<ModalOverlay />
-				<ModalContent bg={"black"} border={"1px solid gray"} maxW={"400px"}>
+				<ModalContent bg={colorMode === "light" ? "white" : "black"} border={"1px solid gray"} maxW={"400px"}>
 					<ModalHeader>Search user</ModalHeader>
 					<ModalCloseButton />
 					<ModalBody pb={6}>
