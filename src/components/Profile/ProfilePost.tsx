@@ -78,28 +78,28 @@ const ProfilePost = ({ post }: any) => {
 			>
 				<Flex
 					opacity={0}
-					_hover={{ opacity: colorMode === "light" ? 0.6 : 0.9 }}
+					_hover={{ opacity: colorMode === "light" ? 0.5 : 0.7 }}
 					position={"absolute"}
 					top={0}
 					left={0}
 					right={0}
 					bottom={0}
-					bg={"blackAlpha.700"}
+					bg={colorMode === "light" ? "blackAlpha.900" : "blackAlpha.700"}
 					transition={"all 0.3s ease"}
 					zIndex={1}
 					justifyContent={"center"}
 				>
 					<Flex alignItems={"center"} justifyContent={"center"} gap={50}>
 						<Flex>
-							<AiFillHeart size={20} color={colorMode === "light" ? "white" : undefined} />
-							<Text fontWeight={"bold"} ml={2} color={colorMode === "light" ? "white" : undefined}>
+							<AiFillHeart size={20} color={colorMode === "light" ? "white" : "white"} />
+							<Text fontWeight={"bold"} ml={2} color={colorMode === "light" ? "white" : "white"}>
 								{post.likes.length}
 							</Text>
 						</Flex>
 
 						<Flex>
-							<FaComment size={20} color={colorMode === "light" ? "white" : undefined} />
-							<Text fontWeight={"bold"} ml={2} color={colorMode === "light" ? "white" : undefined}>
+							<FaComment size={20} color={colorMode === "light" ? "white" : "white"} />
+							<Text fontWeight={"bold"} ml={2} color={colorMode === "light" ? "white" : "white"}>
 								{post.comments.length}
 							</Text>
 						</Flex>
@@ -109,11 +109,11 @@ const ProfilePost = ({ post }: any) => {
 				<Image src={post.imageURL} alt='profile post' w={"100%"} h={"100%"} objectFit={"cover"} />
 			</GridItem>
 
-			<Modal isOpen={isOpen} onClose={onClose} isCentered={true} size={{ base: "3xl", md: "5xl" }}>
+			<Modal isOpen={isOpen} onClose={onClose} isCentered={true} size={{ base: "3xl", md: "5xl" }} >
 				<ModalOverlay />
-				<ModalContent>
+				<ModalContent >
 					<ModalCloseButton />
-					<ModalBody bg={"black"} pb={5}>
+					<ModalBody bg={colorMode === "light" ? "white" : "black"} pb={5}>
 						<Flex
 							gap='4'
 							w={{ base: "90%", sm: "70%", md: "full" }}
