@@ -31,6 +31,7 @@ import usePostStore from "../../store/postStore";
 import Caption from "../Comment/Caption";
 
 const ProfilePost = ({ post }: any) => {
+
 	const { colorMode } = useColorMode();
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const userProfile = useUserProfileStore((state: any) => state.userProfile);
@@ -41,6 +42,7 @@ const ProfilePost = ({ post }: any) => {
 	const decrementPostsCount = useUserProfileStore((state: any) => state.deletePost);
 
 	const handleDeletePost = async () => {
+
 		if (!window.confirm("Are you sure you want to delete this post?")) return;
 		if (isDeleting) return;
 
@@ -61,7 +63,7 @@ const ProfilePost = ({ post }: any) => {
 			showToast("Error", error.message, "error");
 		} finally {
 			setIsDeleting(false);
-		}
+		};
 	};
 
 	return (
@@ -178,4 +180,3 @@ const ProfilePost = ({ post }: any) => {
 };
 
 export default ProfilePost;
-
