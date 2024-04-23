@@ -22,18 +22,14 @@ import usePreviewImg from "../../hooks/usePreviewImg";
 import useEditProfile from "../../hooks/useEditProfile";
 import useShowToast from "../../hooks/useShowToast";
 
-const EditProfile = ({
-  isOpen,
-  onClose,
-}: {
-  isOpen: boolean;
-  onClose: () => void;
-}) => {
+const EditProfile = ({isOpen, onClose }: { isOpen: boolean; onClose: () => void; }) => {
+
   const [inputs, setInputs] = useState({
     fullName: "",
     username: "",
     bio: "",
   });
+  
   const { colorMode } = useColorMode();
   const authUser = useAuthStore((state: any) => state.user);
   const fileRef = useRef<HTMLInputElement>(null);
