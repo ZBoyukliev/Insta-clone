@@ -1,9 +1,11 @@
 import { Box, Flex, Tooltip, useColorMode } from "@chakra-ui/react";
 import { NotificationsLogo } from "../../../assets/constants";
 import { BiBell } from "react-icons/bi";
-
+import useAuthStore from "../../../store/authStore";
 const Notifications = () => {
 	const { colorMode } = useColorMode();
+	const authUser = useAuthStore((state: any) => state.user);
+	console.log(authUser);
 
 	return (
 		<Tooltip

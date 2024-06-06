@@ -5,7 +5,7 @@ import useSignUpWithEmailAndPassword from "../../hooks/useSignUpWithEmailAndPass
 
 const Signup = () => {
 
-    const [inputs, setInputs] = useState({
+	const [inputs, setInputs] = useState({
 		fullName: "",
 		username: "",
 		email: "",
@@ -14,9 +14,26 @@ const Signup = () => {
 
 	const [showPassword, setShowPassword] = useState(false);
 	const { loading, error, signup } = useSignUpWithEmailAndPassword();
+	const [passwordError, setPasswordError] = useState("");
 
-    return (
-        <>
+	const handlePasswordChange = (e: any) => {
+		const newPassword = e.target.value;
+		if (newPassword.length < 6) {
+			setPasswordError("Password must be at least 6 characters long.");
+		} else {
+			setPasswordError("");
+		}
+		setInputs({ ...inputs, password: newPassword });
+	};
+
+	const handleSignup = () => {
+		if (!passwordError && inputs.password.length >= 6) {
+			signup(inputs);
+		}
+	};
+
+	return (
+		<>
 			<Input
 				placeholder='Email'
 				fontSize={14}
@@ -41,14 +58,14 @@ const Signup = () => {
 				value={inputs.fullName}
 				onChange={(e) => setInputs({ ...inputs, fullName: e.target.value })}
 			/>
-            <InputGroup>
+			<InputGroup>
 				<Input
 					placeholder='Password'
 					fontSize={14}
 					type={showPassword ? "text" : "password"}
 					value={inputs.password}
 					size={"sm"}
-					onChange={(e) => setInputs({ ...inputs, password: e.target.value })}
+					onChange={handlePasswordChange}
 				/>
 				<InputRightElement h='full'>
 					<Button variant={"ghost"} size={"sm"} onClick={() => setShowPassword(!showPassword)}>
@@ -57,25 +74,32 @@ const Signup = () => {
 				</InputRightElement>
 			</InputGroup>
 
+			{passwordError && (
+				<Alert status='error' fontSize={13} p={2} borderRadius={4}>
+					<AlertIcon fontSize={12} />
+					{passwordError}
+				</Alert>
+			)}
+
 			{error && (
 				<Alert status='error' fontSize={13} p={2} borderRadius={4}>
 					<AlertIcon fontSize={12} />
 					{error.message}
 				</Alert>
 			)}
-			
+
 			<Button
 				w={"full"}
 				colorScheme='blue'
 				size={"sm"}
 				fontSize={14}
 				isLoading={loading}
-				onClick={() => signup(inputs)}
+				onClick={handleSignup}
 			>
 				Sign Up
 			</Button>
 		</>
-    );
+	);
 };
 
 export default Signup;
