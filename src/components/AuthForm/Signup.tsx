@@ -20,6 +20,8 @@ const Signup = () => {
 		const newPassword = e.target.value;
 		if (newPassword.length < 6) {
 			setPasswordError("Password must be at least 6 characters long.");
+		} else if (!/[A-Z]/.test(newPassword)) {
+			setPasswordError("Password must contain at least one capital letter.");
 		} else {
 			setPasswordError("");
 		}
@@ -27,7 +29,7 @@ const Signup = () => {
 	};
 
 	const handleSignup = () => {
-		if (!passwordError && inputs.password.length >= 6) {
+		if (!passwordError && inputs.password.length >= 6 && /[A-Z]/.test(inputs.password)) {
 			signup(inputs);
 		}
 	};
